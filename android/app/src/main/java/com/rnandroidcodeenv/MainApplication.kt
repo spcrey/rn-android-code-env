@@ -1,4 +1,4 @@
-package com.rnandroid
+package com.rnandroidcodeenv
 
 import android.app.Application
 import com.facebook.react.PackageList

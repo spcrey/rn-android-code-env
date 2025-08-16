@@ -6,7 +6,7 @@ import {
 const ReactFragmentComponent = (pros: {data: string}) => {
     return (<View>
         <Text>
-            ReactFragmentComponent: Data: {pros.data}
+            ReactFragmentComponent Data: {pros.data}
         </Text>
     </View>)
 }

@@ -1,4 +1,4 @@
-package com.rnandroid
+package com.rnandroidcodeenv
 
 import android.content.Intent
 import android.os.Bundle
@@ -17,12 +17,8 @@ class MainActivity : ReactActivity() {
         findViewById<Button>(R.id.btn_to_main_react_activity)
     }
 
-    val btnToReactFragment: Button by lazy {
+    val btnReactFragment: Button by lazy {
         findViewById<Button>(R.id.btn_to_react_fragment)
-    }
-
-    val btnToComposeActivity: Button by lazy {
-        findViewById<Button>(R.id.btn_to_compose_activity)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +29,7 @@ class MainActivity : ReactActivity() {
             val intent = Intent(this, MainReactActivity::class.java)
             startActivity(intent)
         }
-        btnToReactFragment.setOnClickListener {
+        btnReactFragment.setOnClickListener {
             Log.i(TAG, "To ReactFragment")
             val launchOptions = Bundle().apply {
                 putString("data", "ReactFragment")
@@ -46,11 +42,6 @@ class MainActivity : ReactActivity() {
                 .beginTransaction()
                 .add(R.id.react_fragment, reactNativeFragment)
                 .commit()
-        }
-        btnToComposeActivity.setOnClickListener {
-            Log.i(TAG, "To ComposeActivity")
-            val intent = Intent(this, MainComposeActivity::class.java)
-            startActivity(intent)
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.rnandroid
+package com.rnandroidcodeenv
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
