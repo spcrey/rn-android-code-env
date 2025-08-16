@@ -1,22 +1,47 @@
 package com.rnandroidcodeenv
 
+import android.content.Intent
+import android.os.Bundle
+import android.util.Log
+import android.widget.Button
 import com.facebook.react.ReactActivity
-import com.facebook.react.ReactActivityDelegate
-import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled
-import com.facebook.react.defaults.DefaultReactActivityDelegate
+import com.facebook.react.ReactFragment
 
 class MainActivity : ReactActivity() {
 
-    /**
-     * Returns the name of the main component registered from JavaScript. This is used to schedule
-     * rendering of the component.
-     */
-    override fun getMainComponentName(): String = "RnAndroidCodeEnv"
+    companion object {
+        const val TAG = "MainActivity"
+    }
 
-    /**
-     * Returns the instance of the [ReactActivityDelegate]. We use [DefaultReactActivityDelegate]
-     * which allows you to enable New Architecture with a single boolean flags [fabricEnabled]
-     */
-    override fun createReactActivityDelegate(): ReactActivityDelegate =
-        DefaultReactActivityDelegate(this, mainComponentName, fabricEnabled)
+    val btnToReactActivity: Button by lazy {
+        findViewById<Button>(R.id.btn_to_main_react_activity)
+    }
+
+    val btnReactFragment: Button by lazy {
+        findViewById<Button>(R.id.btn_to_react_fragment)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.layout_main_activity)
+        btnToReactActivity.setOnClickListener {
+            Log.i(TAG, "To ReactActivity")
+            val intent = Intent(this, MainReactActivity::class.java)
+            startActivity(intent)
+        }
+        btnReactFragment.setOnClickListener {
+            Log.i(TAG, "To ReactFragment")
+            val launchOptions = Bundle().apply {
+                putString("data", "ReactFragment")
+            }
+            val reactNativeFragment = ReactFragment.Builder()
+                .setComponentName("ReactFragmentComponent")
+                .setLaunchOptions(launchOptions)
+                .build()
+            supportFragmentManager
+                .beginTransaction()
+                .add(R.id.react_fragment, reactNativeFragment)
+                .commit()
+        }
+    }
 }
