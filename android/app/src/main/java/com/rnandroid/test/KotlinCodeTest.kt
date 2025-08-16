@@ -1,4 +1,4 @@
-package com.rnandroid
+package com.rnandroid.test
 
 object KotlinCodeTest {
     @JvmStatic
