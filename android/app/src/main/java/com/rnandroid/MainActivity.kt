@@ -1,4 +1,4 @@
-package com.rnandroidcodeenv
+package com.rnandroid
 
 import android.content.Intent
 import android.os.Bundle

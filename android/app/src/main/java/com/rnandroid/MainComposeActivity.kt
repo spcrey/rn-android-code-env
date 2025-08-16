@@ -1,4 +1,4 @@
-package com.rnandroidcodeenv
+package com.rnandroid
 
 import android.os.Bundle
 import android.widget.Toast
@@ -13,7 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import com.rnandroidcodeenv.ui.theme.AndroidTheme
+import com.rnandroid.ui.theme.AndroidTheme
 
 class MainComposeActivity : ComponentActivity() {
 

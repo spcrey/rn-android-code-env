@@ -1,4 +1,4 @@
-package com.rnandroidcodeenv.ui.theme
+package com.rnandroid.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
