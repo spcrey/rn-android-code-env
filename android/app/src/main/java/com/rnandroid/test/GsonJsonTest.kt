@@ -11,7 +11,7 @@ object GsonJsonTest {
     }
 
     interface ObjectUnpack<T> {
-        fun unpackFromString(packString: String): T
+        fun unpackFromString(packJsonString: String): T
     }
 
     data class Person(
@@ -25,9 +25,9 @@ object GsonJsonTest {
                 addProperty("data", jsonString)
             }
             println("Step2: JsonString to PackJson")
-            val packString = gson.toJson(packJson)
-            println("Step3: PackJson tTo PackString")
-            return packString
+            val packJsonString = gson.toJson(packJson)
+            println("Step3: PackJson tTo PackJsonString")
+            return packJsonString
         }
     }
 
@@ -38,9 +38,9 @@ object GsonJsonTest {
     class PersonBuilder : ObjectUnpack<Person>, Builder<Person> {
         var packString: String? = null
 
-        override fun unpackFromString(packString: String): Person {
-            val packJson = gson.fromJson(packString, JsonObject::class.java)
-            println("Step1: PackString to PackJson")
+        override fun unpackFromString(packJsonString: String): Person {
+            val packJson = gson.fromJson(packJsonString, JsonObject::class.java)
+            println("Step1: PackJsonString to PackJson")
             val escapeJsonString = packJson.get("data")
             println("Step2: PackJson to EscapeJsonString")
             val jsonString = gson.fromJson(escapeJsonString, String::class.java)
